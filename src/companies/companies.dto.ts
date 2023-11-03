@@ -4,7 +4,7 @@ import { CnpjValidator } from './validator-custom';
 export class CompaniesDto {
     @IsNotEmpty()
     username: string;
-    
+
     @IsNotEmpty()
     client_name: string;
 

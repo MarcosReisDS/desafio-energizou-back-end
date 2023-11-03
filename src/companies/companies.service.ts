@@ -13,11 +13,14 @@ export class CompaniesService {
     return await this.companysRepository.save(company);
   }
 
-  async searchCompany(company_cnpj: string | null): Promise<any> {
-    if (company_cnpj) {
+  async searchCompany(query: { company_cnpj?: string, id?: number }): Promise<any> {
+    const { company_cnpj, id } = query
+
+    if (company_cnpj || id) {
       return await this.companysRepository.findOne({
         where: {
-          cnpj: company_cnpj,
+          ...(company_cnpj ? { cnpj: company_cnpj } : {}),
+          ...(id ? { id: id } : {})
         },
       })
     }
@@ -27,7 +30,6 @@ export class CompaniesService {
 
   async login(username: string, password: string) {
     return await this.companysRepository.findOne({
-      select: ["client_name", "cnpj"],
       where: {
         username,
         password

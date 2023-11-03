@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, Post, Query, Put, Delete, Param, ParseIntPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Put, Delete, Param, ParseIntPipe } from '@nestjs/common';
 import { CompaniesService } from './companies.service';
 import { CompaniesDto } from './companies.dto';
 import { Company } from './entitys/componies.entity';
@@ -11,9 +11,9 @@ export class CompaniesController {
 
   @Get("/")
   async searchCompany(
-    @Query() query: { company_cnpj?: string }
+    @Query() query: { company_cnpj?: string, id?: number }
   ) {
-    return this.companiesService.searchCompany(query.company_cnpj)
+    return this.companiesService.searchCompany(query)
   }
 
   @Post("/")
@@ -27,7 +27,7 @@ export class CompaniesController {
 
   @Get("/login")
   async login(
-    @Query() company_data: {username: string, password: string}
+    @Query() company_data: { username: string, password: string }
   ) {
 
     return await this.companiesService.login(company_data.username, company_data.password);

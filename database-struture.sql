@@ -19,4 +19,4 @@ COLLATE='utf8mb4_0900_ai_ci'
 ENGINE=InnoDB
 ;
 
-INSERT IGNORE INTO companies (id, username, password, is_admin) VALUES(1, "admin", "admin", 1);
+INSERT IGNORE INTO companies (id, username, password, client_name,is_admin) VALUES(1, "admin", "admin", "admin", 1);

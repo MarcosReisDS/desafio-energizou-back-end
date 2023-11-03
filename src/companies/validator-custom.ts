@@ -5,7 +5,6 @@ import {
 
 import { cnpj } from 'cpf-cnpj-validator';
 
-
 @ValidatorConstraint({ name: 'cnpj', async: false })
 export class CnpjValidator implements ValidatorConstraintInterface {
   validate(value: string) {
@@ -15,5 +14,4 @@ export class CnpjValidator implements ValidatorConstraintInterface {
   defaultMessage() {
     return 'CNPJ Invalido!';
   }
-
 }
